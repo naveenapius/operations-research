@@ -1,18 +1,28 @@
+#include <stdio.h>
+#define DSTS 5  //number of destinations
+#define SRCS 3   //number of sources
+
+
 /*
 North West Corner Method of obtaining initial basic feasible solution for transportation problems
 */
 
-#include <stdio.h>
-#define SRCS 3   //number of sources
-#define DSTS 5  //number of destinations
 
-int srcs[SRCS], dsts[DSTS], cm[SRCS][DSTS];
+
+int dsts[DSTS], srcs[SRCS], cm[SRCS][DSTS];
 
 
 
 int initDests()
 {
     //initialising global array DSTS
+    int i;
+    for(i=0; i<DSTS; i++)
+    {
+        printf("\nEnter demand at destination %d: ", i);
+        scanf("%d", &dsts[i]);
+    }
+    printf("\nInitialised demands at all destinations");
     return 0;
 }
 
@@ -20,6 +30,13 @@ int initDests()
 int initSrcs()
 {
     //initialising global array SRCS
+    int i;
+    for(i=0; i<SRCS; i++ )
+    {
+        printf("\nEnter supply at source %d: ". i);
+        scanf("%d", &srcs[i]);
+    }
+    printf("\nInitialised supply at all sources: ");
     return 0;
 }
 
