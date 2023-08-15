@@ -1,3 +1,4 @@
 # operations-research
-### More classwork :(
-### p.s NWCM is in development
+More classwork :(
+
+p.s NWCM is in development
