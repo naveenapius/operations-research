@@ -113,7 +113,7 @@ int checkBalance()
     return balance;
 }
 
-    // i++;
+
 
 int NWCM()
 {
@@ -122,7 +122,6 @@ int NWCM()
     int cost=0;
     while(row < SRCS && col < DSTS)
     {   
-        // printf("\nIteration: %d", i);
         int supply=sup[row], demand=dem[col];
         if(supply >= demand)
         {
@@ -138,8 +137,6 @@ int NWCM()
             cost += (supply * cm[row][col]);
             row++;
         }
-    // showState();
-    // i++;
     }
     printf("\nCost using initial basic feasible solution obtained using NWCM: %d\n\n", cost);
     return 0;
