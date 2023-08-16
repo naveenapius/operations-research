@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define DSTS 4  //number of destinations
-#define SRCS 3   //number of sources
+#define DSTS 2  //number of destinations
+#define SRCS 2   //number of sources
 
 
 /*
@@ -87,7 +87,29 @@ int showState()
 
 int checkBalance()
 {
-    int balance;
+    int balance, supply=0, demand=0;
+    int i,j; //loop variables
+    for(i=0; i<SRCS; i++)
+    {
+        supply += sup[i];
+    }
+    for(j=0; j<DSTS; j++)
+    {
+        demand += dem[j];
+    }
+    balance = supply-demand;
+    if(balance==0)
+    {
+        printf("\nDemand and Supply are balanced.");
+    }
+    else if(balance > 0)
+    {
+        printf("\nThere is a surplus of %d units", balance);
+    }
+    else if(balance < 0)
+    {
+        printf("\nThere is a shortage of %d units", balance);
+    }
     return balance;
 }
 
@@ -140,6 +162,7 @@ void main()
     showState();
 
     //running NWCM
+    checkBalance();
     NWCM();
 }
 //end
