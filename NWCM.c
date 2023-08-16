@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define DSTS 5  //number of destinations
+#define DSTS 4  //number of destinations
 #define SRCS 3   //number of sources
 
 
@@ -91,22 +91,43 @@ int checkBalance()
     return balance;
 }
 
+    // i++;
 
 int NWCM()
 {
     //running algorithm to obtain initial basic feasible solution
-    int cost;
-    return cost;
+    int row=0, col=0, i=1;
+    int cost=0;
+    while(row < SRCS && col < DSTS)
+    {   
+        // printf("\nIteration: %d", i);
+        int supply=sup[row], demand=dem[col];
+        if(supply >= demand)
+        {
+            supply -= demand;
+            sup[row] = supply;
+            cost += (demand * cm[row][col]);
+            col++;
+        }
+        else if(supply < demand)
+        {
+            demand -= supply;
+            dem[col] = demand;
+            cost += (supply * cm[row][col]);
+            row++;
+        }
+    // showState();
+    // i++;
+    }
+    printf("\nCost using initial basic feasible solution obtained using NWCM: %d\n\n", cost);
+    return 0;
 }
 
 
 
 
-
-
-
 //MAIN
-int main()
+void main()
 {
     //initialising supply and demand 
     initSrcs();
@@ -117,5 +138,8 @@ int main()
 
     //showing current state
     showState();
-    return 0;
+
+    //running NWCM
+    NWCM();
 }
+//end
